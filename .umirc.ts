@@ -6,6 +6,9 @@ import sharedbMongoConfig from './sharedb-mongo/config';
 export default defineConfig({
   title: 'ShareDB中文文档',
   mode: 'site', // doc | site
+  base: '/sharedb-zh',
+  publicPath: '/sharedb-zh/',
+  exportStatic: {},
   styles: ['.__dumi-default-layout-toc {width: 160px !important;}'],
   resolve: {
     includes: ['.'],
