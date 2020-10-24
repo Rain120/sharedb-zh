@@ -10,7 +10,7 @@ _这篇文档是针对 `sharedb@1.x`。 如果需要使用 `sharedb@1.x-beta`, �
 [![Build Status](https://travis-ci.org/share/sharedb.svg?branch=master)](https://travis-ci.org/share/sharedb)
 [![Coverage Status](https://coveralls.io/repos/github/share/sharedb/badge.svg?branch=master)](https://coveralls.io/github/share/sharedb?branch=master)
 
-`ShareDB` 是一个基于 `JSON` 文档 [操作转换`(OT)`](https://en.wikipedia.org/wiki/Operational_transformation) 的实时数据库后端。它是 [`DerbyJS web`应用程序](http://derbyjs.com/) 的实时后端框架。
+[`ShareDB`](https://github.com/share/sharedb) 是一个基于 `JSON` 文档 [操作转换`(OT)`](https://en.wikipedia.org/wiki/Operational_transformation) 的实时数据库后端。它是 [`DerbyJS web`应用程序](http://derbyjs.com/) 的实时后端框架。
 
 要了解问题、讨论和公告, 请加入 [`ShareJS` 邮件列表](https://groups.google.com/forum/?fromgroups#!forum/sharejs) 或[查看 FAQ](./docs/faq.md)。
 
@@ -58,11 +58,13 @@ var connection = new sharedb.Connection(socket);
 
 ## 示例
 
-[<img src="/images/counter.gif" height="300">
-简单的应用程序演示实时同步](/images/counter.gif)
+![简单的应用程序演示实时同步](/images/counter.gif)
 
-[<img src="/images/leaderboard.gif" height="436">
-排行榜展示生活查询应用程序](/images/leaderboard.gif)
+<p align='center'>简单的应用程序演示实时同步</p>
+
+![排行榜展示生活查询应用程序](/images/leaderboard.gif)
+
+<p align='center'>排行榜展示生活查询应用程序</p>
 
 ## 数据模型
 
