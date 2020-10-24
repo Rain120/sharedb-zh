@@ -18,9 +18,9 @@ order: 4
 
 #### `ERR_OP_ALREADY_SUBMITTED`
 
-The same op has been received by the server twice.
+同一`op`被服务器接收了两次.
 
-This is non-critical, and part of normal control flow, and is sent as an error in order to short-circuit the op processing. It is eventually swallowed by the server, and shouldn't need further handling.
+这是非关键操作，是正常控制流程的一部分，并作为错误发送，以使`op`处理短路。 最终它被服务器吞没，不需要进一步处理.
 
 #### `ERR_SUBMIT_TRANSFORM_OPS_NOT_FOUND`
 
