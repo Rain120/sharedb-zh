@@ -58,11 +58,11 @@ var connection = new sharedb.Connection(socket);
 
 ## 示例
 
-![简单的应用程序演示实时同步](/images/counter.gif)
+![简单的应用程序演示实时同步](../public/images/counter.gif)
 
 <p align='center'>简单的应用程序演示实时同步</p>
 
-![排行榜展示生活查询应用程序](/images/leaderboard.gif)
+![排行榜展示生活查询应用程序](../public/images/leaderboard.gif)
 
 <p align='center'>排行榜展示生活查询应用程序</p>
 

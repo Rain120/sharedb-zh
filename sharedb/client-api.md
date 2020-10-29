@@ -135,9 +135,9 @@ var connection = new ShareDB.Connection(socket);
 
 ### Class: `ShareDB.Query`
 
-`query.ready` _(Boolean)_: 如果查询结果已准备就绪且可在`query.results`上使用，则为`true`
+`query.ready` _(Boolean)_: 如果查询结果已准备就绪且可在`query.results`上使用, 则为`true`
 
-`query.results` _(Array)_: 查询结果，作为[`ShareDB.Doc`](#class-sharedbdoc)实例的数组
+`query.results` _(Array)_: 查询结果, 作为[`ShareDB.Doc`](#class-sharedbdoc)实例的数组
 
 `query.extra` : (类型取决于数据库适配器和查询)不是文档数组的额外查询结果。可用于某些数据库适配器和查询。
 
@@ -159,7 +159,7 @@ var connection = new ShareDB.Connection(socket);
 
 ### Class: `ShareDB.Backend`
 
-后端代表`ShareDB`的服务器端实例。 它主要负责连接到客户端，并将请求发送到数据库适配器。 它还负责某些配置，例如设置[middleware](#middlewares)和 [projections](#projections)。
+后端代表`ShareDB`的服务器端实例。 它主要负责连接到客户端, 并将请求发送到数据库适配器。 它还负责某些配置, 例如设置[middleware](#middlewares)和 [projections](#projections)。
 
 #### `constructor`
 
@@ -170,12 +170,12 @@ var backend = new Backend(options);
 
 使用提供的选项构造一个新的`Backend`实例:
 
-- `db` _DB (optional)_: 一个为`ShareDB`提供数据存储的`ShareDB` [database adapter](#database-adapters)的实例。 如果省略，将创建一个新的非持久内存适配器，该适配器不应在生产中使用，但可能对测试有用
-- `pubsub` _PubSub (optional)_: `ShareDB` [Pub/Sub adapter](#pubsub-adapters)适配器的实例，它提供了一个通道来通知其他`ShareDB`实例数据更改。 如果省略，将创建一个新的内存适配器。与数据库适配器不同，内存实例可以在生产环境中使用，在该生产环境中，**发布/订阅**状态仅需要在单个独立服务器上持久存在
-- `milestoneDb` _MilestoneDB (optional)_: 一个`ShareDB` [`milestone adapter`](#milestone-adapters) 的实例，该实例为`milestone adapter`提供数据存储，`milestone adapter`是按指定版本间隔存储的文档的历史快照。 如果省略，则不会启用此功能
-- `extraDbs` _Object (optional)_: 一个对象，其值是可以[查询](#class-sharedbquery)的额外数据库实例。 键是可以传递到查询选项数据库字段中的名称
-- `suppressPublish` _boolean (optional)_: 如果设置为`true`，则提交的任何更改都不会在`pubsub`上发布
-- `maxSubmitRetries` _number (optional)_: 允许重试提交的次数。如果省略，请求将重试无限次
+- `db` _DB (optional)_: 一个为`ShareDB`提供数据存储的`ShareDB` [database adapter](#database-adapters)的实例。 如果省略, 将创建一个新的非持久内存适配器, 该适配器不应在生产中使用, 但可能对测试有用
+- `pubsub` _PubSub (optional)_: `ShareDB` [Pub/Sub adapter](#pubsub-adapters)适配器的实例, 它提供了一个通道来通知其他`ShareDB`实例数据更改。 如果省略, 将创建一个新的内存适配器。与数据库适配器不同, 内存实例可以在生产环境中使用, 在该生产环境中, **发布/订阅**状态仅需要在单个独立服务器上持久存在
+- `milestoneDb` _MilestoneDB (optional)_: 一个`ShareDB` [`milestone adapter`](#milestone-adapters) 的实例, 该实例为`milestone adapter`提供数据存储, `milestone adapter`是按指定版本间隔存储的文档的历史快照。 如果省略, 则不会启用此功能
+- `extraDbs` _Object (optional)_: 一个对象, 其值是可以[查询](#class-sharedbquery)的额外数据库实例。 键是可以传递到查询选项数据库字段中的名称
+- `suppressPublish` _boolean (optional)_: 如果设置为`true`, 则提交的任何更改都不会在`pubsub`上发布
+- `maxSubmitRetries` _number (optional)_: 允许重试提交的次数。如果省略, 请求将重试无限次
 
 #### `connect`
 
@@ -192,7 +192,7 @@ var connection = backend.connect(connection, req);
 ```
 
 - `connection` _Connection (optional)_: 要绑定到`Backend`的[`Connection`](#class-sharedbconnection)实例
-- `req` _Object (optional)_: 连接上下文对象, 它可以包含将在[中间件](#中间件)中可用的信息, 如 `cookie` 或会话数据。
+- `req` _Object (optional)_: 连接上下文对象, 它可以包含将在[中间件](server-api#中间件)中可用的信息, 如 `cookie` 或会话数据。
 
 返回一个 [`Connection`](#class-sharedbconnection)。
 
@@ -202,12 +202,12 @@ var connection = backend.connect(connection, req);
 var agent = backend.listen(stream, req);
 ```
 
-向后端注册`Stream`。 当服务器从客户端收到新连接时，应调用此方法。
+向后端注册`Stream`。 当服务器从客户端收到新连接时, 应调用此方法。
 
-- `stream` _Stream_: 一个[`Stream`](https://nodejs.org/api/stream.html)(或类似流的对象)，将用于在新**代理**与**后端**之间进行通信
-- `req` _Object (optional)_: 连接上下文对象，该对象可以包含[中间件](#middlewares)中可用的信息，例如`cookie`或会话数据
+- `stream` _Stream_: 一个[`Stream`](https://nodejs.org/api/stream.html)(或类似流的对象), 将用于在新**代理**与**后端**之间进行通信
+- `req` _Object (optional)_: 连接上下文对象, 该对象可以包含[中间件](server-api#中间件)中可用的信息, 例如`cookie`或会话数据
 
-返回一个[代理](#class-agent)，该代理在[中间件](#middlewares)中也可用。
+返回一个[代理](#class-sharedbagent), 该代理在[中间件](server-api#中间件)中也可用。
 
 #### `close`
 
@@ -215,9 +215,9 @@ var agent = backend.listen(stream, req);
 backend.close(callback);
 ```
 
-Disconnects ShareDB and all of its underlying services (database, pubsub, etc.).
+断开`ShareDB`及其所有基础服务(数据库, `pubsub`等)的连接。
 
-- `callback` _Function_: a callback with the signature `function (error: Error): void` that will be called once the services have stopped, or with an `error` if at least one of them could not be stopped
+- `callback` _Function_: 带有签名函数的 `function (error: Error): void`回调, 在服务停止时调用, 或者在服务中至少有一个不能停止时出现错误
 
 #### `use`
 
@@ -225,12 +225,12 @@ Disconnects ShareDB and all of its underlying services (database, pubsub, etc.).
 backend.use(action, middleware);
 ```
 
-Adds [middleware](#middlewares) to the `Backend`.
+将[中间件](server-api#中间件)添加到后端。
 
-- `action` _string | string[]_: an action, or array of action names defining when to apply the middleware
-- `middleware` _Function_: a middleware function with the signature `function (context: Object, callback: Function): void;`. See [middleware](#middlewares) for more details
+- `action` _string | string[]_: 定义何时应用**中间件**的**操作或操作名称**数组
+- `middleware` _Function_: 具有签名的中间件 `function (context: Object, callback: Function): void` 有关更多详细信息, 请参见[中间件](server-api#中间件)
 
-Returns the `Backend` instance, which allows for multiple chained calls.
+返回`Backend`实例, 该实例允许多个链接调用。
 
 #### `addProjection`
 
@@ -238,11 +238,11 @@ Returns the `Backend` instance, which allows for multiple chained calls.
 backend.addProjection(name, collection, fields);
 ```
 
-Adds a [projection](#projections).
+添加一个 [projection](#projections).
 
-- `name` _string_: the name of the projection
-- `collection` _string_: the name of the collection on which to apply the projection
-- `fields` _Object_: a declaration of which fields to include in the projection, such as `{ field1: true }`. Defining sub-field projections is not supported.
+- `name` _string_: `projection` 的名字
+- `collection` _string_: 应用映射的集合的名称
+- `fields` _Object_: 包含在映射中的字段的声明, 例如`{field1: true}`。 不支持定义子映射。
 
 #### `submit`
 
@@ -250,14 +250,14 @@ Adds a [projection](#projections).
 backend.submit(agent, index, id, op, options, callback);
 ```
 
-Submits an operation to the `Backend`.
+向 `Backend` 提交 `op` 操作
 
-- `agent` _[`Agent`](#class-agent)_: connection agent to pass to the middleware
-- `index` _string_: the name of the target collection or projection
-- `id` _string_: the document ID
-- `op` _Object_: the operation to submit
-- `options` _Object_: these options are passed through to the database adapter's `commit` method, so any options that are valid there can be used here
-- `callback` _Function_: a callback with the signature `function (error: Error, ops: Object[]): void;`, where `ops` are the ops committed by other clients between the submitted `op` being submitted and committed
+- `agent` _[`Agent`](#class-sharedbagent)_: 连接`agent`传递给中间件
+- `index` _string_: 目标集合或映射的名称
+- `id` _string_: 文档`id`
+- `op` _Object_: 提交的 `op`
+- `options` _Object_:这些选项将传递到数据库适配器的`commit`方法, 因此可以在此处使用此处有效的任何选项
+- `callback` _Function_: 具有签名函数的回调函数`function (error: Error, ops: Object[]): void`, 其中`ops`是在提交的`op`和提交的`op`之间由其他客户端提交的`ops`
 
 #### `getOps`
 
@@ -265,15 +265,15 @@ Submits an operation to the `Backend`.
 backend.getOps(agent, index, id, from, to, options, callback);
 ```
 
-Fetches the ops for a document between the requested version numbers, where the `from` value is inclusive, but the `to` value is non-inclusive.
+在所请求的版本号之间获取文档的`op`操作, 其中`from`值包括在内, 而`to`值不包括在内。
 
-- `agent` _[`Agent`](#class-agent)_: connection agent to pass to the middleware
-- `index` _string_: the name of the target collection or projection
-- `id` _string_: the document ID
-- `from` _number_: the first op version to fetch. If set to `null`, then ops will be fetched from the earliest version
-- `to` _number_: The last op version. This version will _not_ be fetched (ie `to` is non-inclusive). If set to `null`, then ops will be fetched up to the latest version
-- `options`: _Object (optional)_: options can be passed directly to the database driver's `getOps` inside the `opsOptions` property: `{opsOptions: {metadata: true}}`
-- `callback`: _Function_: a callback with the signature `function (error: Error, ops: Object[]): void;`, where `ops` is an array of the requested ops
+- `agent` _[`Agent`](#class-sharedbagent)_: 连接`agent`传递给中间件
+- `index` _string_: 目标集合或映射的名称
+- `id` _string_: 文档`id`
+- `from` _number_: 获取的第一个`op`版本。 如果设置为`null`, 则将从最早的版本中获取操作
+- `to` _number_: 最后一个 op 版本。 此版本将不会被获取(即, 不包含在内)。 如果设置为`null`, 则将获取操作的最新版本
+- `options`: _Object (optional)_: 选项可以直接传递给`opts Options`属性 `{opsOptions: {metadata: true}}`中的数据库驱动程序的 getOpts
+- `callback`: _Function_: 具有签名函数的回调函数`function (error: Error, ops: Object[]): void`, 其中`ops`是所请求的`ops`的数组
 
 #### `getOpsBulk`
 
@@ -281,15 +281,15 @@ Fetches the ops for a document between the requested version numbers, where the 
 backend.getOpsBulk(agent, index, fromMap, toMap, options, callback);
 ```
 
-Fetches the ops for multiple documents in a collection between the requested version numbers, where the `from` value is inclusive, but the `to` value is non-inclusive.
+在所请求的版本号之间获取集合中多个文档的操作, 其中`from`值包括在内, 而 to 值不包括在内。
 
-- `agent` _[`Agent`](#class-agent)_: connection agent to pass to the middleware
-- `index` _string_: the name of the target collection or projection
-- `id` _string_: the document ID
-- `fromMap` _Object_: an object whose keys are the IDs of the target documents. The values are the first versions requested of each document. For example, `{abc: 3}` will fetch ops for document with ID `abc` from version `3` (inclusive)
-- `toMap` _Object_: an object whose keys are the IDs of the target documents. The values are the last versions requested of each document (non-inclusive). For example, `{abc: 3}` will fetch ops for document with ID `abc` up to version `3` (_not_ inclusive)
-- `options`: _Object (optional)_: options can be passed directly to the database driver's `getOpsBulk` inside the `opsOptions` property: `{opsOptions: {metadata: true}}`
-- `callback`: _Function_: a callback with the signature `function (error: Error, opsMap: Object): void;`, where `opsMap` is an object whose keys are the IDs of the requested documents, and their values are the arrays of requested ops, eg `{abc: []}`
+- `agent` _[`Agent`](#class-sharedbagent)_: 连接`agent`传递给中间件
+- `index` _string_: 目标集合或映射的名称
+- `id` _string_: 文档`id`
+- `fromMap` _Object_: 一个对象, 其键是目标文档的`ID`。 这些值是每个文档要求的第一个版本。 例如, `{abc: 3}`将从版本`3`(含)起获取`ID`为`abc`的文档的操作
+- `toMap` _Object_: 一个对象, 其键是目标文档的`ID`。 值是每个文档要求的最新版本(不包括在内)。 例如, {abc: 3}将获取 ID 为`abc`直至`3`版本(不包括在内)的文档的操作
+- `options`: _Object (optional)_: 选项可以直接传递到`opsOptions`属性内的数据库驱动程序的`getOpsBulk: {opsOptions: {metadata: true}}`
+- `callback`: _Function_: 具有签名函数的回调函数`function (error: Error, opsMap: Object): void;`, 其中`opsMap`是一个对象, 其键是请求的文档的`ID`, 其值是请求的操作的数组, 例如`{abc: [] }`
 
 #### `fetch`
 
@@ -297,13 +297,13 @@ Fetches the ops for multiple documents in a collection between the requested ver
 backend.fetch(agent, index, id, options, callback);
 ```
 
-Fetch the current snapshot of a document.
+获取文档的当前快照。
 
-- `agent` _[`Agent`](#class-agent)_: connection agent to pass to the middleware
-- `index` _string_: the name of the target collection or projection
-- `id` _string_: the document ID
-- `options`: _Object (optional)_: options can be passed directly to the database driver's `fetch` inside the `snapshotOptions` property: `{snapshotOptions: {metadata: true}}`
-- `callback`: _Function_: a callback with the signature `function (error: Error, snapshot: Snapshot): void;`, where `snapshot` is the requested snapshot
+- `agent` _[`Agent`](#class-sharedbagent)_: 连接`agent`传递给中间件
+- `index` _string_: 目标集合或映射的名称
+- `id` _string_: 文档`id`
+- `options`: _Object (optional)_: 选项可以直接传递到`snapshotOptions`属性内的数据库驱动程序的`fetch`中: `{snapshotOptions: {metadata: true}}`
+- `callback`: _Function_: 具有签名函数的回调函数`function (error: Error, snapshot: Snapshot): void`, 其中快照是请求的快照
 
 #### `fetchBulk`
 
@@ -311,13 +311,13 @@ Fetch the current snapshot of a document.
 backend.fetchBulk(agent, index, ids, options, callback);
 ```
 
-Fetch multiple document snapshots from a collection.
+从集合中获取多个文档快照。
 
-- `agent` _[`Agent`](#class-agent)_: connection agent to pass to the middleware
-- `index` _string_: the name of the target collection or projection
-- `ids` _string[]_: array of document IDs
-- `options`: _Object (optional)_: options can be passed directly to the database driver's `fetchBulk` inside the `snapshotOptions` property: `{snapshotOptions: {metadata: true}}`
-- `callback`: _Function_: a callback with the signature `function (error: Error, snapshotMap: Object): void;`, where `snapshotMap` is an object whose keys are the requested IDs, and the values are the requested `Snapshot`s
+- `agent` _[`Agent`](#class-sharedbagent)_: 连接`agent`传递给中间件
+- `index` _string_: 目标集合或映射的名称
+- `ids` _string[]_: 文档`ids`的数组
+- `options`: _Object (optional)_: 选项可以在`snapshotOptions`属性中直接传递给数据库驱动程序的`fetchBulk`: `{snapshotOptions: {metadata: true}}`
+- `callback`: _Function_: 带有签名函数的`function (error: Error, snapshotMap: Object): void`, 其中`snapshotMap`是一个对象, 其键是请求的`id`, 值是请求的快照
 
 #### `queryFetch`
 
@@ -325,24 +325,24 @@ Fetch multiple document snapshots from a collection.
 backend.queryFetch(agent, index, query, options, callback);
 ```
 
-Fetch snapshots that match the provided query. In most cases, querying the backing database directly should be preferred, but `queryFetch` can be used in order to apply middleware, whilst avoiding the overheads associated with using a `Doc` instance.
+获取与提供的查询匹配的快照。 在大多数情况下, 应首选直接查询支持数据库, 但可以使用`queryFetch`来应用中间件, 同时避免与使用`Doc`实例相关的开销。
 
-- `agent` _[`Agent`](#class-agent)_: connection agent to pass to the middleware
-- `index` _string_: the name of the target collection or projection
-- `query` _Object_: a query object, whose format will depend on the database adapter being used
-- `options` _Object_: an object that may contain a `db` property, which specifies which database to run the query against. These extra databases can be attached via the `extraDbs` option in the `Backend` constructor
-- `callback` _Function_: a callback with the signature `function (error: Error, snapshots: Snapshot[], extra: Object): void;`, where `snapshots` is an array of the snapshots matching the query, and `extra` is an (optional) object that the database adapter might return with more information about the results (such as counts)
+- `agent` _[`Agent`](#class-sharedbagent)_: 连接代理传递给中间件
+- `index` _string_: 目标集合或映射的名称
+- `query` _Object_: 查询对象, 其格式将取决于所使用的数据库适配器
+- `options` _Object_: 一个可能包含`db`属性的对象, 该属性指定要对哪个数据库运行查询。 这些额外的数据库可以通过`Backend`构造函数中的`extraDbs`选项附加
+- `callback` _Function_: 带有签名函数的 `function (error: Error, snapshots: Snapshot[], extra: Object): void`, 其中, `Snapshot`是与查询匹配的快照的数组, `extra`是一个(可选的)对象, 数据库适配器可能返回更多关于结果的信息(比如计数)
 
 ### Class: `ShareDB.Agent`
 
-`Agent` 是服务器上客户端连接状态的表示。 如果连接是通过`backend.connect`创建的(即客户端正在服务器上运行)，则可以通过直接引用：`connection。agent` 访问与连接关联的代理。
+`Agent` 是服务器上客户端连接状态的表示。 如果连接是通过`backend.connect`创建的(即客户端正在服务器上运行), 则可以通过直接引用: `connection。agent` 访问与连接关联的代理。
 
-该代理`(Agent)`将在所有[中间件](#middlewares)请求中可用。 `agent.custom`字段是一个对象，可用于存储在中间件中使用的任意信息。 例如
+该代理`(Agent)`将在所有[中间件](server-api#中间件)请求中可用。 `agent.custom`字段是一个对象, 可用于存储在中间件中使用的任意信息。 例如
 
 ```javascript
 backend.use('connect', (request, callback) => {
   // 进行克隆以防止在连接后使对象变异的最佳实践。
-  // 您可能还需要考虑深克隆，具体取决于 request.req 的结构。
+  // 您可能还需要考虑深克隆, 具体取决于 request.req 的结构。
   Object.assign(request.agent.custom, request.req);
   callback();
 });
@@ -367,9 +367,9 @@ backend.use('readSnapshots', (request, callback) => {
   callback();
 });
 
-// 在这里，您应该确定用户具有哪些权限，可能是通过读取 cookie 并可能通过发出一些数据库请求
+// 在这里, 您应该确定用户具有哪些权限, 可能是通过读取 cookie 并可能通过发出一些数据库请求
 // 来检查他们可以访问的文档或他们具有的角色等。
-// 如果异步执行此操作，请确保调用 backend.connect 取得权限后。
+// 如果异步执行此操作, 请确保调用 backend.connect 取得权限后。
 const connectionInfo = getUserPermissions();
 // 传递信息作为第二个参数。 这将在 connection 中间件中作为 request.req 提供。
 const connection = backend.connect(null, connectionInfo);

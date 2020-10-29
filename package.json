@@ -1,6 +1,14 @@
 {
   "private": true,
   "name": "sharedb-zh",
+  "author": {
+    "name": "Rain120",
+    "url": "https://github.com/Rain120"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Rain120/sharedb-zh"
+  },
   "scripts": {
     "start": "dumi dev",
     "build": "dumi build",

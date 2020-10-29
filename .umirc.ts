@@ -6,8 +6,8 @@ import sharedbMongoConfig from './sharedb-mongo/config';
 export default defineConfig({
   title: 'ShareDB中文文档',
   mode: 'site', // doc | site
-  favicon: '/images/chao.png',
-  logo: '/images/db.png',
+  favicon: '/chao.png',
+  logo: '/db.png',
   base: '/sharedb-zh',
   publicPath: '/sharedb-zh/',
   exportStatic: {},
